@@ -1,0 +1,114 @@
+logo = """           
+ ,adPPYba, ,adPPYYba,  ,adPPYba, ,adPPYba, ,adPPYYba, 8b,dPPYba,  
+a8"     "" ""     `Y8 a8P_____88 I8[    "" ""     `Y8 88P'   "Y8  
+8b         ,adPPPPP88 8PP"""""""  `"Y8ba,  ,adPPPPP88 88          
+"8a,   ,aa 88,    ,88 "8b,   ,aa aa    ]8I 88,    ,88 88          
+ `"Ybbd8"' `"8bbdP"Y8  `"Ybbd8"' `"YbbdP"' `"8bbdP"Y8 88   
+            88             88                                 
+           ""             88                                 
+                          88                                 
+ ,adPPYba, 88 8b,dPPYba,  88,dPPYba,   ,adPPYba, 8b,dPPYba,  
+a8"     "" 88 88P'    "8a 88P'    "8a a8P_____88 88P'   "Y8  
+8b         88 88       d8 88       88 8PP""""""" 88          
+"8a,   ,aa 88 88b,   ,a8" 88       88 "8b,   ,aa 88          
+ `"Ybbd8"' 88 88`YbbdP"'  88       88  `"Ybbd8"' 88          
+              88                                             
+              88           
+"""
+#working
+#from art import logo
+print(logo)
+print ("\nWelcome to Message Encryptor !!!\n")
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+
+def crypt(string, shift, direction):
+
+    if direction=="decode":
+
+        shift *= -1
+
+        ","=="."
+        "!"== "?"
+
+    else:
+        shift
+
+    new_string = ""
+    for i in range(0,len(string)):
+
+        if string[i] ==" ":
+            new_string +=" "
+        elif string[i] ==",":
+            new_string +="."
+        elif string[i] ==".":
+            new_string +=","
+        elif string[i] =="?":
+            new_string +="!"
+        elif string[i] =="!":
+            new_string +="?"
+        elif string[i] not in alphabet:
+            new_string+= str(string[i])
+
+        else:
+
+            alpha_indx=alphabet.index(string[i])
+            replaced_index = alpha_indx + shift
+
+            if  abs(replaced_index)>=26:
+
+                replaced_index=replaced_index%25
+                new_string += alphabet[replaced_index]
+
+            else:
+                replaced_index = alpha_indx + shift
+                new_string += alphabet[replaced_index]
+
+    print(f"\nThe {direction}d text is : {new_string}   ")
+
+
+
+#working
+sld_continue = True
+while sld_continue:
+
+    text = input("\nType in your Message to be encoded:").lower()
+    req_shift = int(input('By how many digits do you wanna shift the characters: '))
+
+#working
+    req_direction = input('Want to encode or decode?\n Please specify:').lower()
+    dir_f = False
+    while dir_f == False:
+        if req_direction !="encode" and  req_direction != "decode":
+            req_direction = input('Kindly type "encode" or "decode" only :').lower()
+            dir_f = False
+        else:
+            dir_f = True
+            req_direction
+    crypt(string=text, shift=req_shift, direction=req_direction)
+
+
+# working
+    response = input("\nDo you want to continue,type Y  for yes and N  for No: ").lower()
+    res_flg = True
+    while res_flg:
+
+        if response != "y" and response != "n":
+            res_flg = True
+            response = input("Kindly  type Y or N  only ").lower()
+        else:
+            res_flg= False
+
+
+    if response == "n":
+        sld_continue = False
+        print("\n\nThank You So Much !!\n Bye Bye!!")
+
+
+
+
+
+
+
+
